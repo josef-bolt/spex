@@ -7,7 +7,11 @@ defmodule Spex.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      package: package(),
+      deps: deps(),
+      source_url: git_url(),
+      homepage_url: git_url(),
+      description: "Functional helper library"
     ]
   end
 
@@ -18,11 +22,16 @@ defmodule Spex.MixProject do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
+    []
+  end
+
+  defp package do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      links: %{"Github" => git_url()},
+      licenses: ["GPL-3.0-or-later"]
     ]
   end
+
+  defp git_url, do: "https://github.com/josef-bolt/spex"
 end
