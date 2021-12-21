@@ -1,8 +1,4 @@
 defmodule SpexTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Spex
-
-  test "greets the world" do
-    assert Spex.hello() == :world
-  end
 end
