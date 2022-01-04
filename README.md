@@ -14,3 +14,21 @@ def deps do
   ]
 end
 ```
+
+## Usage
+
+### Putting into nested maps
+Given a nested map `%{a: %{b: :c}}` where you want to update the value at `:b` to `:d`.
+Using standard library functions you might do the following.
+```
+iex(1)> foo = %{a: %{b: :c}}
+%{a: %{b: :c}}
+iex(2)> Map.put(foo, :a, Map.put(foo.a, :b, :d))
+%{a: %{b: :d}}
+```
+
+Tolerable at this depth, but not for `%{a: %{b: %{c: %{d: %{e: :f}}}}}`. Using `Spex.nested_put!/3`, you simply
+```
+iex(1)> Spex.nested_put!(%{a: %{b: %{c: %{d: %{e: :f}}}}}, [:a, :b, :c, :d, :e], :g)
+%{a: %{b: %{c: %{d: %{e: :g}}}}}
+```
